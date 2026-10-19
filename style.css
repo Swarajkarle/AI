@@ -1,0 +1,1200 @@
+/* ==========================================================================
+   Ubuntu AI Practical Code Viewer - Design System & Stylesheet
+   Ubuntu Yaru Aubergine & Terminal Theme
+   ========================================================================== */
+
+:root {
+  /* Ubuntu Color Palette */
+  --ubuntu-orange: #E95420;
+  --ubuntu-orange-hover: #ff6e38;
+  --ubuntu-orange-active: #c84013;
+  --ubuntu-aubergine-dark: #2C001E;
+  --ubuntu-aubergine-mid: #4F1941;
+  --ubuntu-aubergine-light: #77216F;
+  --ubuntu-aubergine-deep: #1E0014;
+  --ubuntu-warm-grey: #AEA79F;
+  --ubuntu-cool-grey: #333333;
+  --ubuntu-green: #38b44a;
+
+  /* Dark Theme Tokens (Default) */
+  --bg-desktop: radial-gradient(circle at 80% 20%, #4F1941 0%, #2C001E 50%, #170010 100%);
+  --panel-bg: rgba(18, 18, 18, 0.88);
+  --panel-text: #DFDBCE;
+  --panel-border: rgba(255, 255, 255, 0.08);
+
+  --window-bg: #201e23;
+  --window-border: rgba(255, 255, 255, 0.12);
+  --window-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  
+  --titlebar-bg: #2d2a32;
+  --titlebar-text: #eae8e4;
+  --tab-bg: #242228;
+  --tab-active-bg: #1c1a20;
+  --tab-active-border: var(--ubuntu-orange);
+
+  --sidebar-bg: #28252d;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-item-bg: rgba(255, 255, 255, 0.03);
+  --sidebar-item-hover: rgba(233, 84, 32, 0.14);
+  --sidebar-item-active: rgba(233, 84, 32, 0.22);
+  --sidebar-item-border-active: var(--ubuntu-orange);
+
+  --editor-bg: #1a171e;
+  --editor-text: #f0f0f4;
+  --gutter-bg: #1e1b23;
+  --gutter-text: #6b6478;
+  --gutter-border: rgba(255, 255, 255, 0.06);
+
+  --header-bg: #26222b;
+  --header-border: rgba(255, 255, 255, 0.08);
+
+  --input-bg: #1c1921;
+  --input-border: rgba(255, 255, 255, 0.14);
+  --input-text: #f5f5f5;
+  --input-placeholder: #827b8e;
+
+  --btn-secondary-bg: #35303c;
+  --btn-secondary-hover: #433d4c;
+  --btn-secondary-text: #e8e6ed;
+  --btn-secondary-border: rgba(255, 255, 255, 0.1);
+
+  --statusbar-bg: #18151c;
+  --statusbar-text: #8c8599;
+  --statusbar-border: rgba(255, 255, 255, 0.06);
+
+  --toast-bg: #1c1a20;
+  --toast-border: var(--ubuntu-green);
+
+  /* Typography */
+  --font-ui: 'Ubuntu', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: 'Ubuntu Mono', 'Fira Code', Menlo, Consolas, Monaco, monospace;
+}
+
+/* Light Theme Overrides (Ubuntu Yaru Light) */
+body.theme-ubuntu-light {
+  --bg-desktop: radial-gradient(circle at 75% 25%, #E95420 0%, #77216F 45%, #4F1941 100%);
+  --panel-bg: rgba(240, 239, 238, 0.92);
+  --panel-text: #333333;
+  --panel-border: rgba(0, 0, 0, 0.1);
+
+  --window-bg: #fafafa;
+  --window-border: rgba(0, 0, 0, 0.18);
+  --window-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+
+  --titlebar-bg: #eceae8;
+  --titlebar-text: #333333;
+  --tab-bg: #e2dfdc;
+  --tab-active-bg: #ffffff;
+  --tab-active-border: var(--ubuntu-orange);
+
+  --sidebar-bg: #f4f3f2;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-item-bg: rgba(0, 0, 0, 0.02);
+  --sidebar-item-hover: rgba(233, 84, 32, 0.1);
+  --sidebar-item-active: rgba(233, 84, 32, 0.16);
+
+  --editor-bg: #ffffff;
+  --editor-text: #2c2830;
+  --gutter-bg: #f5f4f7;
+  --gutter-text: #968fa3;
+  --gutter-border: rgba(0, 0, 0, 0.08);
+
+  --header-bg: #f7f6f5;
+  --header-border: rgba(0, 0, 0, 0.08);
+
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.2);
+  --input-text: #222222;
+  --input-placeholder: #7c7785;
+
+  --btn-secondary-bg: #ebe8e5;
+  --btn-secondary-hover: #ddd9d5;
+  --btn-secondary-text: #333333;
+  --btn-secondary-border: rgba(0, 0, 0, 0.12);
+
+  --statusbar-bg: #ebe9e7;
+  --statusbar-text: #666070;
+  --statusbar-border: rgba(0, 0, 0, 0.08);
+
+  --toast-bg: #ffffff;
+  --toast-border: var(--ubuntu-green);
+}
+
+/* ==========================================================================
+   Base & Resets
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-ui);
+  background: var(--bg-desktop);
+  color: var(--panel-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   Ubuntu Desktop Top Panel (GNOME Shell Style)
+   ========================================================================== */
+.ubuntu-top-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: var(--panel-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--panel-text);
+  z-index: 1000;
+  user-select: none;
+}
+
+.panel-left, .panel-center, .panel-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activities-btn {
+  padding: 2px 8px;
+  border-radius: 12px;
+  transition: background-color 0.15s ease;
+  cursor: default;
+}
+
+.activities-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.panel-app-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--ubuntu-orange);
+}
+
+.terminal-icon {
+  fill: currentColor;
+}
+
+.ubuntu-clock {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-tray {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-programs {
+  background: rgba(233, 84, 32, 0.18);
+  color: var(--ubuntu-orange);
+  border: 1px solid rgba(233, 84, 32, 0.4);
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tray-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  color: var(--panel-text);
+}
+
+.tray-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--ubuntu-orange);
+}
+
+.tray-icon {
+  display: inline-flex;
+  opacity: 0.85;
+}
+
+body.theme-ubuntu-dark .icon-sun { display: block; }
+body.theme-ubuntu-dark .icon-moon { display: none; }
+body.theme-ubuntu-light .icon-sun { display: none; }
+body.theme-ubuntu-light .icon-moon { display: block; }
+
+/* ==========================================================================
+   Desktop Canvas & Main Application Window
+   ========================================================================== */
+.ubuntu-desktop {
+  min-height: 100vh;
+  padding: 46px 20px 24px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ubuntu-window {
+  width: 100%;
+  max-width: 1360px;
+  background: var(--window-bg);
+  border-radius: 10px;
+  box-shadow: var(--window-shadow);
+  border: 1px solid var(--window-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: max-width 0.3s ease, border-radius 0.3s ease;
+}
+
+/* Maximize / Expanded Mode */
+.ubuntu-window.maximized {
+  max-width: 100%;
+  min-height: calc(100vh - 54px);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Window Titlebar (Ubuntu Yaru Style)
+   ========================================================================== */
+.window-titlebar {
+  background-color: var(--titlebar-bg);
+  color: var(--titlebar-text);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--sidebar-border);
+  user-select: none;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.win-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: filter 0.15s, transform 0.15s;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.win-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+}
+
+.win-close { background-color: #E95420; } /* Ubuntu Signature Orange Close */
+.win-min { background-color: #55525c; }
+.win-max { background-color: #726e7a; }
+
+.win-close::after {
+  content: "×";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 11px;
+  color: #fff;
+  opacity: 0;
+  font-weight: bold;
+}
+.win-close:hover::after {
+  opacity: 1;
+}
+
+.window-title-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.window-tabs {
+  display: flex;
+  align-items: center;
+}
+
+.window-tab {
+  background: var(--tab-bg);
+  padding: 5px 14px;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-top: 2px solid transparent;
+}
+
+.window-tab.active {
+  background: var(--tab-active-bg);
+  border-top-color: var(--tab-active-border);
+}
+
+.tab-tag {
+  background: rgba(233, 84, 32, 0.15);
+  color: var(--ubuntu-orange);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.window-actions {
+  display: flex;
+  align-items: center;
+}
+
+.action-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  color: var(--titlebar-text);
+  transition: background 0.15s, color 0.15s;
+}
+
+.action-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--ubuntu-orange);
+}
+
+.ubuntu-window:not(.maximized) .icon-contract { display: none; }
+.ubuntu-window:not(.maximized) .icon-expand { display: block; }
+.ubuntu-window.maximized .icon-contract { display: block; }
+.ubuntu-window.maximized .icon-expand { display: none; }
+
+/* ==========================================================================
+   Editor Header & Search Bar
+   ========================================================================== */
+.editor-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.header-branding {
+  max-width: 600px;
+}
+
+.branding-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.ubuntu-circle-logo {
+  color: var(--ubuntu-orange);
+  font-size: 12px;
+}
+
+.lab-pill {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ubuntu-orange);
+}
+
+.main-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--input-placeholder);
+  line-height: 1.4;
+}
+
+.header-search-wrapper {
+  position: relative;
+  min-width: 320px;
+  max-width: 440px;
+  flex: 1;
+}
+
+.search-input-box {
+  display: flex;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  padding: 0 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input-box:focus-within {
+  border-color: var(--ubuntu-orange);
+  box-shadow: 0 0 0 2px rgba(233, 84, 32, 0.25);
+}
+
+.search-icon {
+  fill: var(--input-placeholder);
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.search-input-box input {
+  width: 100%;
+  height: 38px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--input-text);
+  font-size: 13px;
+}
+
+.search-input-box input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.clear-search-btn {
+  font-size: 18px;
+  color: var(--input-placeholder);
+  display: none;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.clear-search-btn.visible {
+  display: block;
+}
+
+.clear-search-btn:hover {
+  color: var(--ubuntu-orange);
+}
+
+.search-shortcut-hint {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--input-placeholder);
+  font-size: 11px;
+  font-family: var(--font-code);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.search-meta {
+  font-size: 11px;
+  color: var(--input-placeholder);
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+/* ==========================================================================
+   Workspace Layout (Sidebar + Main Panel)
+   ========================================================================== */
+.editor-workspace {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 600px;
+}
+
+/* ==========================================================================
+   Sidebar: Program Navigation List
+   ========================================================================== */
+.sidebar-nav {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--input-placeholder);
+}
+
+.sidebar-counter {
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(233, 84, 32, 0.15);
+  color: var(--ubuntu-orange);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.mobile-sidebar-toggle-row {
+  display: none;
+}
+
+.practicals-list {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  max-height: calc(100vh - 280px);
+}
+
+/* Program Card / Button Item */
+.practical-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--sidebar-item-bg);
+  border: 1px solid transparent;
+  border-radius: 7px;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+}
+
+.practical-item:hover {
+  background: var(--sidebar-item-hover);
+  border-color: rgba(233, 84, 32, 0.25);
+}
+
+.practical-item.active {
+  background: var(--sidebar-item-active);
+  border-color: var(--sidebar-item-border-active);
+  box-shadow: inset 3px 0 0 var(--ubuntu-orange);
+}
+
+.practical-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.practical-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ubuntu-orange);
+  letter-spacing: 0.3px;
+}
+
+.practical-ext {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--input-placeholder);
+}
+
+.practical-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--titlebar-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.practical-desc-snip {
+  font-size: 11px;
+  color: var(--input-placeholder);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 12px 16px;
+  border-top: 1px solid var(--sidebar-border);
+}
+
+.system-specs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--input-placeholder);
+}
+
+.os-indicator {
+  color: var(--ubuntu-orange);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Main Code Editor Panel
+   ========================================================================== */
+.code-editor-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--editor-bg);
+  overflow: hidden;
+}
+
+.practical-info-bar {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--header-border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.info-details {
+  max-width: 650px;
+}
+
+.info-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pill-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.pill-num {
+  background: var(--ubuntu-orange);
+  color: #ffffff;
+}
+
+.pill-lang {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--titlebar-text);
+}
+
+.pill-step {
+  background: rgba(233, 84, 32, 0.15);
+  color: var(--ubuntu-orange);
+}
+
+.practical-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--titlebar-text);
+  margin-bottom: 4px;
+}
+
+.practical-description {
+  font-size: 12.5px;
+  color: var(--input-placeholder);
+  line-height: 1.45;
+}
+
+/* Toolbar & Action Buttons */
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-btn-group, .action-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.tool-btn.primary {
+  background-color: var(--ubuntu-orange);
+  color: #ffffff;
+}
+
+.tool-btn.primary:hover {
+  background-color: var(--ubuntu-orange-hover);
+  box-shadow: 0 2px 8px rgba(233, 84, 32, 0.35);
+}
+
+.tool-btn.primary:active {
+  background-color: var(--ubuntu-orange-active);
+}
+
+.tool-btn.secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+}
+
+.tool-btn.secondary:hover {
+  background-color: var(--btn-secondary-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tool-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Copy Notification Toast */
+.toast-notification {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: var(--toast-bg);
+  border: 1px solid var(--toast-border);
+  color: var(--ubuntu-green);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  margin: 10px 20px 0 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideInToast 0.25s ease-out;
+}
+
+.toast-notification.active {
+  display: flex;
+}
+
+.toast-icon {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@keyframes slideInToast {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Code Viewport, Line Numbers Gutter, and Syntax Display
+   ========================================================================== */
+.code-container-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--editor-bg);
+}
+
+.code-viewport {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  max-height: 640px;
+  overflow: auto;
+  position: relative;
+}
+
+.ubuntu-window.maximized .code-viewport {
+  max-height: calc(100vh - 280px);
+}
+
+/* Line Numbers Gutter */
+.line-numbers-gutter {
+  background: var(--gutter-bg);
+  color: var(--gutter-text);
+  border-right: 1px solid var(--gutter-border);
+  padding: 16px 10px 16px 12px;
+  text-align: right;
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1.55;
+  user-select: none;
+  min-width: 46px;
+  flex-shrink: 0;
+}
+
+.line-number-cell {
+  display: block;
+}
+
+/* Code Content Area */
+.code-content-area {
+  flex: 1;
+  padding: 16px;
+  overflow: visible;
+}
+
+.editor-pre {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-code) !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  white-space: pre !important;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  outline: none;
+  background: transparent !important;
+}
+
+.editor-pre code {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  background: transparent !important;
+  color: var(--editor-text) !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+}
+
+/* Prism overrides for seamless Ubuntu dark editor */
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #7d778d !important;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #c5c0d0 !important;
+}
+
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol {
+  color: #ff8b57 !important; /* Ubuntu orange tinted */
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+  color: #8be9fd !important;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  color: #e59be3 !important; /* Ubuntu light purple tinted */
+}
+
+.token.atrule, .token.attr-value, .token.keyword {
+  color: #ff79c6 !important;
+  font-weight: 600;
+}
+
+.token.function, .token.class-name {
+  color: #50fa7b !important;
+}
+
+.token.regex, .token.important, .token.variable {
+  color: #f1fa8c !important;
+}
+
+/* Custom scrollbars */
+.code-viewport::-webkit-scrollbar,
+.practicals-list::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.code-viewport::-webkit-scrollbar-track,
+.practicals-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.code-viewport::-webkit-scrollbar-thumb,
+.practicals-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+
+.code-viewport::-webkit-scrollbar-thumb:hover,
+.practicals-list::-webkit-scrollbar-thumb:hover {
+  background: var(--ubuntu-orange);
+}
+
+/* ==========================================================================
+   Editor Status Bar (Nano / Gedit Style)
+   ========================================================================== */
+.editor-statusbar {
+  background: var(--statusbar-bg);
+  border-top: 1px solid var(--statusbar-border);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--statusbar-text);
+  font-family: var(--font-ui);
+  user-select: none;
+}
+
+.status-left, .status-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-branch {
+  color: var(--ubuntu-orange);
+}
+
+.status-shortcut-tip kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: var(--titlebar-text);
+}
+
+/* ==========================================================================
+   Keyboard Shortcuts Modal
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-backdrop.active {
+  display: flex;
+}
+
+.ubuntu-dialog-window {
+  background: var(--window-bg);
+  border: 1px solid var(--window-border);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  animation: popDialog 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popDialog {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.dialog-titlebar {
+  background: var(--titlebar-bg);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.dialog-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dialog-close-btn {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--input-placeholder);
+}
+
+.dialog-close-btn:hover {
+  color: var(--ubuntu-orange);
+}
+
+.dialog-content {
+  padding: 18px 20px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.shortcuts-table th, .shortcuts-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.shortcuts-table th {
+  color: var(--input-placeholder);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shortcuts-table kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-code);
+  color: var(--ubuntu-orange);
+}
+
+.dialog-footer {
+  padding: 12px 18px;
+  background: var(--header-bg);
+  border-top: 1px solid var(--sidebar-border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) {
+  .editor-workspace {
+    grid-template-columns: 240px 1fr;
+  }
+  .practical-info-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .editor-toolbar {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .ubuntu-top-panel {
+    padding: 0 10px;
+  }
+  .panel-app-title .app-name {
+    display: none;
+  }
+  .ubuntu-desktop {
+    padding: 40px 10px 14px 10px;
+  }
+  .editor-header {
+    padding: 14px;
+  }
+  .header-search-wrapper {
+    min-width: 100%;
+  }
+  .editor-workspace {
+    grid-template-columns: 1fr;
+  }
+  .mobile-sidebar-toggle-row {
+    display: block;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--sidebar-border);
+  }
+  .mobile-nav-toggle-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--sidebar-item-bg);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .practicals-list {
+    max-height: 220px;
+  }
+  .practicals-list.collapsed {
+    display: none;
+  }
+  .sidebar-footer {
+    display: none;
+  }
+  .editor-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-btn-group, .action-btn-group {
+    width: 100%;
+    display: flex;
+  }
+  .nav-btn-group .tool-btn,
+  .action-btn-group .tool-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .status-shortcut-tip {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Full Blackout Screen (Whole page turns completely pitch black)
+   ========================================================================== */
+.full-blackout-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 2147483647;
+  cursor: pointer;
+  user-select: none;
+}
+
+.full-blackout-overlay.active {
+  display: block;
+}
