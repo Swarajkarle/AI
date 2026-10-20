@@ -63,7 +63,18 @@ print("\\nRational Behaviour Analysis")
 print("1. Cleans a room immediately if dirty.")
 print("2. Moves only when current room is already clean.")
 print("3. Stops after both rooms are clean.")
-print("Hence the agent behaves rationally for this environment.")`
+print("Hence the agent behaves rationally for this environment.")
+
+# ==========================================================
+# Logic / Algorithm: Simple Logic — Vacuum Cleaner Reflex Agent
+# ==========================================================
+# 1. Create two rooms, A and B, and mark both as dirty.
+# 2. Place the vacuum agent in room A.
+# 3. Display the current location and environment.
+# 4. If both rooms are clean, stop the program.
+# 5. If the current room is dirty, SUCK to clean it.
+# 6. If the current room is clean, move to the other room.
+# 7. Repeat until both rooms are clean.`
   },
   {
     id: 2,
@@ -154,7 +165,16 @@ print("1. The agent stores previously visited cells.")
 print("2. It avoids obstacles while navigating.")
 print("3. It does not revisit explored locations.")
 print("4. It uses its internal memory to decide the next move.")
-print("Hence, it behaves as a Model-Based Intelligent Agent.")`
+print("Hence, it behaves as a Model-Based Intelligent Agent.")
+
+# ==========================================================
+# Logic / Algorithm: Model-Based Intelligent Agent
+# ==========================================================
+# - Create a grid with a start, goal, and obstacles.
+# - Start from the initial position.
+# - Remember visited cells.
+# - Move right, down, left, or up if the cell is valid.
+# - Stop when the goal is reached or no move is possible.`
   },
   {
     id: 3,
@@ -297,7 +317,16 @@ print("Initial State:")
 for row in initial_state:
     print(row)
 
-a_star(initial_state)`
+a_star(initial_state)
+
+# ==========================================================
+# Logic / Algorithm: A* Search — 8 Puzzle
+# ==========================================================
+# - Define the initial and goal states.
+# - Find the blank tile (0).
+# - Generate possible moves by swapping the blank with a neighboring tile.
+# - Calculate f(n) = g(n) + h(n).
+# - Explore the state with the lowest score until the goal is reached.`
   },
   {
     id: 4,
@@ -373,7 +402,16 @@ def bfs_tower_of_hanoi(n):
 
 
 n = 4
-bfs_tower_of_hanoi(n)`
+bfs_tower_of_hanoi(n)
+
+# ==========================================================
+# Logic / Algorithm: Tower of Hanoi Using BFS
+# ==========================================================
+# - Represent the disks on three pegs.
+# - Generate all legal disk moves.
+# - Store new states in a queue.
+# - Avoid visiting the same state twice.
+# - Continue until all disks reach the target peg.`
   },
   {
     id: 5,
@@ -479,7 +517,16 @@ if solution:
         print(f"Step {step}")
         print_state(state)
 else:
-    print("No solution found.")`
+    print("No solution found.")
+
+# ==========================================================
+# Logic / Algorithm: Blocks World Using BFS
+# ==========================================================
+# - Represent blocks as stacks.
+# - Select the top block from a stack.
+# - Move it to another stack or the table.
+# - Use BFS to explore possible arrangements.
+# - Stop when the goal arrangement is found.`
   },
   {
     id: 6,
@@ -574,7 +621,16 @@ def solveNQ():
 
 
 # Driver Code
-solveNQ()`
+solveNQ()
+
+# ==========================================================
+# Logic / Algorithm: 8-Queens Using Backtracking
+# ==========================================================
+# - Start with an empty chessboard.
+# - Place one queen in each column.
+# - Check that no two queens attack each other.
+# - If a position is unsafe, try another row.
+# - If no position works, remove the previous queen and backtrack.`
   },
   {
     id: 7,
@@ -634,7 +690,16 @@ while True:
     print("Bot:", response)
 
     if re.search(r"\\b(bye|exit)\\b", user_input.lower()):
-        break`
+        break
+
+# ==========================================================
+# Logic / Algorithm: Rule-Based Chatbot
+# ==========================================================
+# - Accept a message from the user.
+# - Convert the message to lowercase.
+# - Match keywords using regular expressions.
+# - Return the predefined response.
+# - Stop when the user types bye or exit.`
   },
   {
     id: 8,
@@ -786,7 +851,16 @@ while True:
     if is_draw():
         print_board()
         print("It's a Draw!")
-        break`
+        break
+
+# ==========================================================
+# Logic / Algorithm: Minimax — Tic-Tac-Toe
+# ==========================================================
+# - The human plays X, and the AI plays O.
+# - Check for a win, loss, or draw.
+# - Try every possible move recursively.
+# - The AI maximizes its score; the human is assumed to minimize it.
+# - Select the best move and repeat until the game ends.`
   }
 ];
 
